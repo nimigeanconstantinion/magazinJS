@@ -1,0 +1,187 @@
+*{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1em;
+    line-height: 1em;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.container.home{
+    display: grid;
+    grid-template-columns: 200px 5fr;
+    grid-template-rows: 10vh 80vh 10vh;
+
+}
+
+header{
+    grid-column: 1/-1;
+    grid-row: 1/1;
+    background:#1B1814;
+    color:#DCD7D1 ;
+}
+main{
+    grid-column: 2/-1;
+    grid-row: 2/3;
+    background: #EFECE9;
+    width: 100%;
+    height: 100%;    
+}
+.meniu{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    width: 200px;
+    background:#CAC2B9;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.meniu input[type="button"]{
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 7px;
+    outline: none;
+    border: none;
+    background: #4B4239;
+    color: white;
+}
+
+footer{
+    grid-column: 1/-1;
+    grid-row: 3/-1;
+    background: gray;
+}
+
+.card.produs{
+    box-shadow: 10px 5px 5px #7B6D5D;
+    
+    margin: 5px;
+    border-radius: 2px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 500px;
+    height: 200px;
+    overflow-y: auto;
+    position: relative;
+}
+.card.produs h1{
+    line-height: 35Px;
+    margin: 3px;
+}
+.card p{
+    margin-top: 7px;
+    font-weight:500;
+}
+#info{
+    text-align: justify;
+    position: relative;
+}
+#categ{
+    margin-top: 10px;
+}
+.info{
+    position:relative;
+    flex-grow: 1;
+    margin-left: 7px;
+}
+#idp{
+    display: none;
+}
+#info{
+    color:#332D27;
+}
+#addcos{
+    position: absolute;
+    bottom: 0px;
+    z-index: 100;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    
+}
+#pret span{
+    color: #BA711E;
+}
+#avatar{
+    height: 150px;
+    width: 150px;
+    flex-grow: 0;
+    margin-left: 7px;
+    position: sticky;
+    top:0px;
+}
+main{
+    margin: auto;
+    display: flex;
+    align-content: center;
+}
+
+
+.container.login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s;
+}
+.login{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.loginform{
+    background: #B8ADA1;
+    width: 320px;
+
+}
+.login input[type="text"],input[type="password"]{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    font-weight: 500;
+}
+.submit{
+    width: 100%;
+    background: #BA711E;
+    color: white;
+    margin-top: 10px;
+    height: 40px;
+}
+legend{
+    background: #EFECE9;
+    font-weight: 700;
+}
+.container.mkuser{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mkuserform{
+    background: #B8ADA1;
+    width: 320px;
+
+}
+.mkuser{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+.mkuser input[type="text"],input[type="password"],textarea{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;    
+}
