@@ -1,3 +1,4 @@
+import { OrderDetails } from "../model/orderDetail";
 
 
 class ControlOrderDetails{
@@ -15,7 +16,14 @@ class ControlOrderDetails{
         if (!this.listDetails.filter(e => e.isEqual(detail))) {
             this.listDetails.push(detail);
         } else {
-            
+            let oldDetail = this.listDetails[this.isDetail];
+            let newDetail = new OrderDetails();
+            newDetail.orderid = oldDetail.orderid;
+            newDetail.productId = oldDetail.productId;
+            newDetail.qnty = oldDetail.qnty + detail.qnty;
+            newDetail.price = oldDetail.price;
+            newDetail.value = newDetail.qnty * newDetail.price;
+            this.updDetail(newDetail);
         }
     
     }
@@ -32,8 +40,9 @@ class ControlOrderDetails{
     updDetail = (det)=>{
         let index = this.isDetail(det);
         if (!index == -1) {
-            let oldDet = this.listDetails[index];
-            oldDet.qnty += det.qnty;
+            this.listDetails.splice(index, 1);
+            this.listDetails.push(det);
+
         }
     }
 }

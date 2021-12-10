@@ -33,6 +33,9 @@ class Home{
         this.categBtn = document.querySelector("#categ");
         this.categBtn.addEventListener("click", this.categClick);
 
+        this.priceBtn = document.querySelector("#pret");
+        this.priceBtn.addEventListener("click", this.priceClick);
+
     }
 
 
@@ -197,6 +200,11 @@ class Home{
             this.contentMain.innerHTML = ``;
             this.addListtoMain(this.listaProduse.filter(e => e.categorie === categorie));
         })
+    }
+
+    priceClick = () => {
+        let sorteList = this.listaProduse.sort((a, b) => { return a.pret - b.pret });
+        console.log(sorteList[sorteList.length-1].pret);
     }
 
 

@@ -35,7 +35,8 @@ class ControlProdus{
     }
     
     getMaxPrice = () => {
-        this.listaProduse.sort((a, b) => { a.pret - b.pret });
+        this.listaProduse.sort((a, b) => { return a.pret - b.pret; });
+        return this.listaProduse[this.listaProduse.length - 1].pret;
     }
 
     getListaStoc = () => {
@@ -64,6 +65,15 @@ class ControlProdus{
     save=() => {
         localStorage.setItem("produse", JSON.stringify(this.listaProduse)); //store colors
        
+    }
+
+    getStoc = (prodID) => {
+        return this.listaProduse.filter(e => e.idprod === prodID).stoc;
+        
+    }
+
+    updStoc = (prod, qntty) => {
+        
     }
  
 }
