@@ -107,8 +107,55 @@ class MakeUser{
             let client = new Persoana(id, nume, adresa, categ, pas);
             this.ctrlpers.addPersoana(client);
             this, this.ctrlpers.save();
+            this.showMessage(document.querySelector(".container.mkuser"), "V-am adaugat cu succes!!","Home" ,0);
+        } else {
+            this.showMessage(document.querySelector(".container.mkuser"), "Nu e ok!!","Back to Add User",1);
+
         }
+
     }
 
+    showMessage = (container, mesaj,textButon,target)=>{
+        container.innerHTML = ``;
+        let msgDiv = document.createElement("div");
+        msgDiv.className = "mesaje";
+      
+
+        let msg = document.createElement("p");
+        msg.className = "message";
+        msg.textContent = mesaj;
+        msgDiv.appendChild(msg);
+        
+        let btnn = document.createElement("button");
+        btnn.className = "bktohome";
+        btnn.textContent = textButon;
+        msgDiv.appendChild(btnn);
+
+        container.appendChild(msgDiv);
+        btnn = document.querySelector(".bktohome");
+        btnn.addEventListener("click", () => {
+            this.msgButton(target);
+        } );
+
+        msgDiv.style.opacity = 1;
+
+    }
+
+    msgButton = (wtg) => {
+        let divmesaj = document.querySelector(".mesaje");
+
+        divmesaj.style.opacity = 0;
+
+        if (wtg == 0) {
+            setTimeout(() => {
+               
+                let home = new Home();
+         }, 700);
+                
+        } else {
+            let mku = new MakeUser();
+        }
+       
+    }
 }
 export { MakeUser };

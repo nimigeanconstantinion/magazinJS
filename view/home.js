@@ -28,7 +28,10 @@ class Home{
         this.homeBtn.addEventListener("click",this.homeClick)
 
         this.loginBtn = document.querySelector("#login");
-        this.loginBtn.addEventListener("click",this.loginClick)
+        this.loginBtn.addEventListener("click", this.loginClick);
+
+        this.categBtn = document.querySelector("#categ");
+        this.categBtn.addEventListener("click", this.categClick);
 
     }
 
@@ -131,13 +134,15 @@ class Home{
     }
 
     addListtoMain = (lista) => {
-        console.log("in lista cu n="+this.listaProduse.length);
-        this.listaProduse.forEach(e =>  {
-            console.log(this.listaProduse.length);
+        let lst = lista;
+        console.log("in lista cu n="+lst.length);
+        lst.forEach(e =>  {
+            console.log(lista.length);
             console.log(e);
             this.contentMain.appendChild(this.makeCard(e));
         });
     }
+
     cosClick = (e) => {
         let ob = e.target;
         if (ob.id == "addcos") {
@@ -145,14 +150,56 @@ class Home{
             console.log(idProd);
         }
     }
+
     homeClick = () => {
         let listaCtg = JSON.parse(localStorage.getItem("categorie"));
         
         let hm = new Home();
     }
+
     loginClick = () => {
         let log = new Login();
     }
+
+    categClick = () => {
+        console.log("in chcateg");
+        let content = this.contentMain.innerHTML;
+        this.contentMain.innerHTML = ``;
+        let divctg = document.createElement("div");
+        divctg.id = "chcateg";
+
+        let h3 = document.createElement("h3");
+        h3.textContent = "Alegeti o categorie";
+        divctg.appendChild(h3);
+
+        let sel = document.createElement("select");
+        sel.id = "selctg";
+        let listcateg = JSON.parse(localStorage.getItem("categorie"));
+        let opt = document.createElement("option");
+        opt.textContent = "Alegeti o categorie";
+        opt.selected = true;
+        opt.disabled = true;
+        opt.hidden = true;
+        sel.appendChild(opt);
+        listcateg.forEach(e => {
+            opt = document.createElement("option");
+            opt.textContent = e;
+            sel.appendChild(opt);
+            
+        })
+        divctg.appendChild(sel);
+        this.contentMain.appendChild(divctg);
+
+        sel.addEventListener("change", ()=> {
+            console.log("lkdlslnldlksdkl lkldk");
+            let categorie = sel.options[sel.selectedIndex].text;
+            console.log(categorie);
+            this.contentMain.innerHTML = ``;
+            this.addListtoMain(this.listaProduse.filter(e => e.categorie === categorie));
+        })
+    }
+
+
 }
 
 export { Home };

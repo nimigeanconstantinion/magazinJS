@@ -34,6 +34,10 @@ class ControlProdus{
         return this.listaProduse.filter(e => e.idprod == idp);
     }
     
+    getMaxPrice = () => {
+        this.listaProduse.sort((a, b) => { a.pret - b.pret });
+    }
+
     getListaStoc = () => {
         return this.listaProduse.filter(e => e.stoc > 0);
     }
