@@ -1,4 +1,4 @@
-import { OrderDetails } from "../model/orderDetail";
+import { OrderDetails } from "../model/orderDetail.js";
 
 
 class ControlOrderDetails{
@@ -6,6 +6,7 @@ class ControlOrderDetails{
     constructor(orderid) {
         this.orderid = orderid;
         this.listDetails = [];
+        this.loadDetails(orderid);
     }
 
     loadDetails = (oid) => {

@@ -58,6 +58,9 @@ class ControlProdus{
         return is;
     }
 
+    getProdus=(idp)=>{
+        return this.listaProduse.filter(e => e.idprod === idp)[0];
+    }
     validcod=(cod)=>{
         return this.listaProduse.filter(e => e.idprod === cod).length == 0;
     }
@@ -72,8 +75,16 @@ class ControlProdus{
         
     }
 
-    updStoc = (prod, qntty) => {
-        
+    updProdus = (prod) => {
+        let index = this.listaProduse.indexOf(prod);
+        this.listaProduse.splice(index, 1);
+        this.listaProduse.push(prod);
+    }
+
+    updStoc = (prodId, qntty) => {
+        let prod = this.getProdus(prodId);
+        prod.stoc += qntty;
+        this.updProdus(prod);
     }
  
 }

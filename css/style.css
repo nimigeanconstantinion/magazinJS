@@ -7,9 +7,9 @@
     box-sizing: border-box;
 }
 
-.container.home{
+body{
     display: grid;
-    grid-template-columns: 200px 5fr;
+    grid-template-columns: 220px 5fr;
     grid-template-rows: 10vh 80vh 10vh;
 
 }
@@ -17,21 +17,29 @@
 header{
     grid-column: 1/-1;
     grid-row: 1/1;
-    background:#1B1814;
-    color:#DCD7D1 ;
+    background:black;
+    color:#60A2C3 ;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header p{
+
 }
 main{
     grid-column: 2/-1;
     grid-row: 2/3;
-    background: #EFECE9;
+    background: #DCC275;
     width: 100%;
     height: 100%;    
 }
 .meniu{
     grid-column: 1/2;
     grid-row: 2/3;
-    width: 200px;
-    background:#CAC2B9;    
+    padding: 10px;
+    width: 220px;
+    background:#E1693C;    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,14 +47,18 @@ main{
     
 }
 .meniu input[type="button"]{
-    width: 150px;
+    width: 180px;
     height: 50px;
     border-radius: 5px;
     margin-top: 7px;
     outline: none;
     border: none;
-    background: #4B4239;
+    background: black;
     color: white;
+    font-size: 1.2em;
+}
+#h_home,#c_home{
+    margin-bottom: auto;
 }
 .main.home{
     /*margin: auto;*/
@@ -70,18 +82,24 @@ footer{
     
     margin: 10px;
     border-radius: 2px;
-    background: white;
+    background: #60A2C3;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     padding: 5px;
     width: 500px;
     height: 200px;
-    overflow-y: auto;
+    overflow-y: hidden;
     position: relative;
 }
 .card.produs h1{
     line-height: 35Px;
-    margin: 3px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    background: #A77346;
+    color: white;
+    position: sticky;
+    top: 5px;
 }
 .card p{
     margin-top: 7px;
@@ -89,15 +107,19 @@ footer{
 }
 #info{
     text-align: justify;
-    position: relative;
+
 }
 #categ{
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .info{
-    position:relative;
+    position:absolute;
     flex-grow: 1;
+    top: 2px;
+    left: 162px;
     margin-left: 7px;
+    overflow-y: auto;
+    height: 80%;
 }
 #idp{
     display: none;
@@ -106,16 +128,16 @@ footer{
     color:#332D27;
 }
 #addcos{
-    position: absolute;
-    bottom: 0px;
-    z-index: 100;
-    right: 0px;
-    width: 30px;
-    height: 30px;
+    position:absolute;
+    bottom: 3px;
+    
+    right: 3px;
+    width: 40px;
+    height: 40px;
     
 }
 #pret span{
-    color: #BA711E;
+    color: #E1693C;
 }
 #avatar{
     height: 150px;
@@ -138,8 +160,11 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 1s;
+    transition: opacity 2s, display 2s,transform 2s; 
+    /*transition: all 2s linear;*/    
+
 }
+
 .login{
     width: 320px;
     display: flex;
@@ -149,7 +174,7 @@ main{
 }
 
 .loginform{
-    background: #B8ADA1;
+    background: #97AB77;
     width: 320px;
 
 }
@@ -162,14 +187,15 @@ main{
 }
 .submit{
     width: 100%;
-    background: #BA711E;
+    background: #E1693C;
     color: white;
     margin-top: 10px;
     height: 40px;
 }
 legend{
-    background: #EFECE9;
+    background: #97AB77;
     font-weight: 700;
+    font-size: 1.3em;
 }
 .container.mkuser{
     width: 100%;
@@ -244,5 +270,8 @@ legend{
 }
 #chcateg select{
     margin-top: 10px;
+}
+.logininfo{
+    font-size: .6em;
 }
 

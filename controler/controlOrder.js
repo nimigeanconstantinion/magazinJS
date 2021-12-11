@@ -5,6 +5,7 @@ import { Order } from "../model/order.js";
 
 import { OrderDetails } from "../model/orderDetail.js";
 import { ControlProdus } from "./controlProdus.js";
+import { ControlOrderDetails } from "./controlOrderDetail.js";
 
 class ControlOrder{
 
@@ -78,6 +79,22 @@ class ControlOrder{
         }
     }
 
+    finishOrder = (ord) => {
+        let controlOD = new ControlOrderDetails(ord.orderId);
+        let listDet = controlOD.listDetails;
+
+        let isok = listDet.filter(e => {
+            return e.qnty > this.controlProdus.getStoc(e.productId);
+        }).length;
+        if (isok = 0) {
+            listDet.forEach(e => {
+                this.controlProdus.updStoc(e.productId, -e.qnty);
+            })
+            ord.status = 1;
+            this.updOrder(ord);
+        }        
+
+    }    
 
 }
 export { ControlOrder };
