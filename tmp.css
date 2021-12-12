@@ -1,75 +1,15 @@
-#cardcos{
-    height: 100px ;
-    background-color: blanchedalmond;
-    font-size: 1em;
-    width: 200px;
-    height: 320px;
-    display: flex;
-    padding: 5px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-#cardcos #cosidprod{
-    display: none;
-}
 
-.infocos h3,p{
-    margin: 0px;
-    width: 200px;
+#addcos{
+    width: 49px;
+    height: 49px;
+    border: none;
+    background: #E1693C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+#addcos img{
+    width: 35px;
+    height: 35px;
     margin: auto;
-
-}
-#cardcos p{
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: 500;
-}
-#cardcos img{
-    width: 180px;
-    height: 180px;
-    margin-bottom: 5px;
-}
-.infocos{
-    width: 90%;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-
-.infocos h3{
-    margin-bottom: auto;
-}
-#myrange{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin:0px auto 0px auto;
-    width: 130px;
-}
-#myrange input[type="button"]{
-    width: 30px;
-    height: 30px;
-}
-
-#cosminus,#cosplus{
-    background: chocolate;
-    border: none;
-    font-size: 1.2em;
-    font-weight: bolder;
-    width: 30px;
-    height: 30px;
-}
-
-#myrange input[type="text"]{
-    width: 70px;
-    height: 28px;
-    border: none;
-    background: white;
-    text-align: center;
-    font-size: 1.2em;
-    readonly:true;
 }

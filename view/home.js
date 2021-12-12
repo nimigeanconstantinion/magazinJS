@@ -170,12 +170,16 @@ class Home {
         
         
         card.appendChild(inf);
-        
+        let divc = document.createElement("div");
+        divc.id = "addcos";
+
         let adcos = document.createElement("img");
-        adcos.id = "addcos";
+        adcos.id = "addcosimg";
         adcos.src = "/images/shopping-cart-svgrepo-com.svg";
+        divc.appendChild(adcos);
+
         // adcos.addEventListener("click", this.cosClick);
-        card.appendChild(adcos);
+        card.appendChild(divc);
         
         return card;
     }
@@ -239,7 +243,17 @@ class Home {
 
     cosClick = (e) => {
         let ob = e.target;
-        let idPr = ob.previousSibling.querySelector("#idp").textContent;
+        console.log("ati apasat pe " + ob.id);
+        let idPr = "";
+        if (ob.id == "addcos") {
+            idPr=ob.parentNode.firstChild.nextElementSibling.textContent;
+            
+        } else {
+            idPr=ob.parentNode.parentNode.firstChild.nextElementSibling.firstChild.nextElementSibling.textContent;
+            
+        }
+        
+            
         console.log("id produs=" + idPr);
         this.updcos(idPr, 1);
         // let det = {};
@@ -485,20 +499,22 @@ class Home {
     mainClick = (e) => {
         console.log(e.target);
         let cmdId = e.target.id;
-       
-        switch (cmdId) {
-            case "loginsubmit":
+        switch (true) {
+            case cmdId==="loginsubmit":
                 //                 this.setAside("client");
                 console.log("sunt la validare user");
                 this.validUser();
                 break;
-            case "addcos":
+            case cmdId === "addcos" || cmdId === "addcosimg":
+                console.log("ati apasat pe ");
+                console.log(e.target.id);
                 this.cosClick(e);
                 break;
-            case "cosplus":
+            
+            case cmdId==="cosplus":
                 this.modcos(e);
                 break;
-            case "cosminus":
+            case cmdId==="cosminus":
                 this.modcos(e);
                 break;
         }
