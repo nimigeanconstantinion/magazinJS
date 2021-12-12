@@ -71,7 +71,7 @@ class ControlProdus{
     }
 
     getStoc = (prodID) => {
-        return this.listaProduse.filter(e => e.idprod === prodID).stoc;
+        return this.listaProduse.filter(e => e.idprod === prodID)[0].stoc;
         
     }
 

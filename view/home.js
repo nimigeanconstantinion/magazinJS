@@ -180,6 +180,48 @@ class Home {
         return card;
     }
 
+    mkCardCos = (ob) => {
+        let div = document.createElement("div");
+        div.id = "cardcos";
+        let idp = document.createElement("p");
+        idp.id = "cosidprod";
+        idp.textContent = ob.idProd;
+        div.appendChild(idp);
+        let prod = this.controlProdus.getProdus(ob.idProd);
+        console.log(prod);
+        let stoc = this.controlProdus.getStoc(ob.idProd);
+        let img = document.createElement("img");
+        img.src = "https://via.placeholder.com/150x150.png?text="+prod.denumire+" "+prod.marca;
+        div.appendChild(img);
+        let h = document.createElement("h3");
+        h.textContent = prod.denumire+" "+prod.marca;
+        div.appendChild(h);
+
+        let stk = document.createElement("p");
+        stk.textContent = "Stoc: "+stoc+" Buc";
+        div.appendChild(stk);
+    
+        let divrng = document.createElement("div");
+        divrng.id = "myrange";
+        
+        let btnm = document.createElement("button");
+        btnm.id = "cosminus";
+        btnm.textContent = "-";
+        divrng.appendChild(btnm);
+        
+        let nr = document.createElement("input");
+        nr.type = "text";
+        nr.id = "rngnr";
+        nr.value = ob.cant;
+        divrng.appendChild(nr);
+    
+        let btnp = document.createElement("button");
+        btnp.id = "cosplus";
+        btnp.textContent = "+";
+        divrng.appendChild(btnp);
+        div.appendChild(divrng);
+        return div;        
+    }
 
     addListtoMain = (lista) => {
         let lst = lista;
@@ -199,20 +241,20 @@ class Home {
         let ob = e.target;
         let idPr = ob.previousSibling.querySelector("#idp").textContent;
         console.log("id produs=" + idPr);
-        this.cosDetails = JSON.parse(localStorage.getItem("cos"));
-        let det = {};
-        if (this.cosDetails.length > 0 && this.cosDetails.filter(e => e.idProd === idPr).length > 0) {
+        this.updcos(idPr, 1);
+        // let det = {};
+        // if (this.cosDetails.length > 0 && this.cosDetails.filter(e => e.idProd === idPr).length > 0) {
            
-            det = this.cosDetails.filter(e => e.idProd === idPr)[0];
-            this.cosDetails.splice(this.cosDetails.indexOf(det), 1);
-            det.cant += 1;
+        //     det = this.cosDetails.filter(e => e.idProd === idPr)[0];
+        //     this.cosDetails.splice(this.cosDetails.indexOf(det), 1);
+        //     det.cant += 1;
 
-        } else {
+        // } else {
            
-            det = new Cos(idPr, 1);
-        }
-        this.cosDetails.push(det);
-        localStorage.setItem("cos", JSON.stringify(this.cosDetails));
+        //     det = new Cos(idPr, 1);
+        // }
+        // this.cosDetails.push(det);
+        // localStorage.setItem("cos", JSON.stringify(this.cosDetails));
         this.mkHeaderInfo(this.client, this.cosDetails);
     }
 
@@ -432,9 +474,14 @@ class Home {
             case cmdBt == "h_login":
                 this.mkLoginForm();
                 break;
+            
+            case cmdBt == "c_cos":
+                    this.showCos();
+                    break;
 
         }
     };
+
     mainClick = (e) => {
         console.log(e.target);
         let cmdId = e.target.id;
@@ -448,9 +495,16 @@ class Home {
             case "addcos":
                 this.cosClick(e);
                 break;
+            case "cosplus":
+                this.modcos(e);
+                break;
+            case "cosminus":
+                this.modcos(e);
+                break;
         }
 
     }
+
     emptyTmp = () => {
         let usr = "";
         let cos = [];
@@ -487,6 +541,65 @@ class Home {
             div.appendChild(cos);
         }
         this.header.appendChild(div);
+    }
+
+    showCos = () => {
+        console.log("sunt in show cos");
+        this.main.innerHTML = ``;
+        let divContainer = document.createElement("div");
+        divContainer.className = "spacecos";
+        this.cosDetails.forEach(e => {
+            
+            let card= this.mkCardCos(e);
+            divContainer.appendChild(card);
+        })
+        this.main.appendChild(divContainer);
+    }
+
+    modcos = (e) => {
+        
+        let elm = e.target;
+        let textnr=e.target.parentNode.firstChild.nextElementSibling;
+        let nr = parseInt(textnr.value);
+
+        let idp=e.target.parentNode.parentNode.firstChild.textContent;
+        let evntid = e.target.id;
+        switch (true) {
+            case evntid == "cosplus":
+                nr += 1;
+                this.updcos(idp, 1);
+                textnr.readOnly = false;
+                textnr.value = nr;
+                textnr.readOnly = true;
+                break;
+            case evntid == "cosminus":
+                nr -= 1;
+                this.updcos(idp, -1);
+                textnr.readOnly = false;
+                textnr.value = nr;
+                textnr.readOnly = true;
+                break;
+        }
+        this.mkHeaderInfo(this.client, this.cosDetails);
+   
+    
+    }
+
+    updcos = (idp,q) => {
+        this.cosDetails = JSON.parse(localStorage.getItem("cos"));
+        let det = {};
+        if (this.cosDetails.length > 0 && this.cosDetails.filter(e => e.idProd === idp).length > 0) {
+           
+            det = this.cosDetails.filter(e => e.idProd === idp)[0];
+            this.cosDetails.splice(this.cosDetails.indexOf(det), 1);
+            det.cant += q;
+
+        } else {
+           
+            det = new Cos(idp, 1);
+        }
+        this.cosDetails.push(det);
+        localStorage.setItem("cos", JSON.stringify(this.cosDetails));        
     }
 }
 export { Home };

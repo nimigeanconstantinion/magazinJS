@@ -105,6 +105,17 @@ footer{
     margin-top: 7px;
     font-weight:500;
 }
+#pret p{
+    width: 150px;
+}
+#pret span{
+    background:#E1693C;
+    width: 100px;
+    color:white;
+    font-size: 1.2em;
+    text-align: right;
+    display: inline-block;
+}
 #info{
     text-align: justify;
 
@@ -112,7 +123,7 @@ footer{
 #categ{
     margin-top: 15px;
 }
-.info{
+.card.produs .info{
     position:absolute;
     flex-grow: 1;
     top: 2px;
@@ -120,6 +131,7 @@ footer{
     margin-left: 7px;
     overflow-y: auto;
     height: 80%;
+    padding: 5px;
 }
 #idp{
     display: none;
@@ -136,9 +148,7 @@ footer{
     height: 40px;
     
 }
-#pret span{
-    color: #E1693C;
-}
+
 #avatar{
     height: 150px;
     width: 150px;
@@ -273,5 +283,97 @@ legend{
 }
 .logininfo{
     font-size: .6em;
+    margin-left: auto;
 }
 
+/*card cos*/
+#cardcos{
+    height: 100px ;
+    background-color: blanchedalmond;
+    font-size: 1em;
+    width: 200px;
+    margin: 5px;
+    height: 280px;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 10px 5px 5px #7B6D5D;
+}
+
+#cardcos #cosidprod{
+    display: none;
+}
+
+
+.infocos h3,.infocos p{
+    margin: 0px;
+    width: 200px;
+    margin: 2px auto;
+
+}
+
+#cardcos p{
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+#cardcos img{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5px;
+}
+.infocos{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.infocos h3{
+    margin-bottom: auto;
+}
+#myrange{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin:0px auto 0px auto;
+    width: 130px;
+}
+#myrange input[type="button"]{
+    width: 30px;
+    height: 30px;
+}
+
+#cosminus,#cosplus{
+    background: chocolate;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bolder;
+    width: 30px;
+    height: 30px;
+}
+
+#myrange input[type="text"]{
+    width: 70px;
+    height: 28px;
+    border: none;
+    background: white;
+    text-align: center;
+    font-size: 1.2em;
+    readonly:true;
+}
+
+.spacecos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:flex-start;
+}
